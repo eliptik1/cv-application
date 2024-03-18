@@ -8,7 +8,7 @@ import Result from "./Components/Result";
 function App() {
   return (
     <div className="flex justify-center">
-      <div className="border-2 flex-1">
+      <div className="border-2 flex-1 flex flex-col items-center gap-6">
         <Personal />
         <Education />
         <Experience />
