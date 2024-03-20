@@ -1,35 +1,76 @@
 import { Card, CardBody, Divider } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
+import { useEffect, useState } from "react";
 
 function Experience() {
+  let [experienceInfo, setExperienceInfo] = useState({
+    company: "",
+    position: "",
+    startDateJob: "",
+    endDateJob: "",
+    locationJob: "",
+  });
+
+  function handleExperienceInfo(e) {
+    let inputName = e.target.id;
+    setExperienceInfo({ ...experienceInfo, [inputName]: e.target.value });
+  }
+
+  useEffect(() => {
+    console.log(experienceInfo);
+  }, [experienceInfo]);
+
   return (
     <Card className="w-[400px]">
       <h2 className="text-xl">Experience</h2>
       <CardBody>
         <label htmlFor="company">Company Name</label>
-        <Input id="company" placeholder="Company Name"></Input>
+        <Input
+          id="company"
+          placeholder="Company Name"
+          value={experienceInfo.company}
+          onChange={handleExperienceInfo}
+        ></Input>
 
         <label htmlFor="position">Position Title</label>
-        <Input id="position" placeholder="Position Title"></Input>
+        <Input
+          id="position"
+          placeholder="Position Title"
+          value={experienceInfo.position}
+          onChange={handleExperienceInfo}
+        ></Input>
 
         <div className="flex justify-between gap-6">
           <div className="w-full">
-            <label htmlFor="start-date-job">Start Date</label>
+            <label htmlFor="startDateJob">Start Date</label>
             <Input
-              id="start-date-job"
+              id="startDateJob"
               placeholder="Start Date"
               type="date"
+              value={experienceInfo.startDateJob}
+              onChange={handleExperienceInfo}
             ></Input>
           </div>
           <div className="w-full">
-            <label htmlFor="end-date-job">End Date</label>
-            <Input id="end-date-job" placeholder="End Date" type="date"></Input>
+            <label htmlFor="endDateJob">End Date</label>
+            <Input
+              id="endDateJob"
+              placeholder="End Date"
+              type="date"
+              value={experienceInfo.endDateJob}
+              onChange={handleExperienceInfo}
+            ></Input>
           </div>
         </div>
 
-        <label htmlFor="location-job">Location</label>
-        <Input id="location-job" placeholder="Location"></Input>
+        <label htmlFor="locationJob">Location</label>
+        <Input
+          id="locationJob"
+          placeholder="Location"
+          value={experienceInfo.locationJob}
+          onChange={handleExperienceInfo}
+        ></Input>
         <div className="flex justify-center gap-1 my-4">
           <ButtonGroup>
             <Button color="default">Cancel</Button>
@@ -42,12 +83,12 @@ function Experience() {
         <Divider></Divider>
         <Card className="mt-2">
           <CardBody>
-            <div className="flex justify-center">University-1</div>
+            <div className="flex justify-center">Company-1</div>
           </CardBody>
         </Card>
         <Card className="mt-2">
           <CardBody>
-            <div className="flex justify-center">University-2</div>
+            <div className="flex justify-center">Company-2</div>
           </CardBody>
         </Card>
       </CardBody>

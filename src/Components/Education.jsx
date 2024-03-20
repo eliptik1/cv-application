@@ -1,8 +1,26 @@
 import { Card, CardBody, Divider } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
+import { useState, useEffect } from "react";
 
 function Education() {
+  let [educationInfo, setEducationInfo] = useState({
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+  });
+
+  function handleEducationInfo(e) {
+    let inputName = e.target.id;
+    setEducationInfo({ ...educationInfo, [inputName]: e.target.value });
+  }
+
+  useEffect(() => {
+    console.log(educationInfo);
+  }, [educationInfo]);
+
   return (
     <Card className="w-[400px] ">
       <h2 className="text-xl">Education</h2>
@@ -12,28 +30,48 @@ function Education() {
           id="school"
           placeholder="School / University"
           type="name"
+          value={educationInfo.school}
+          onChange={handleEducationInfo}
         ></Input>
 
         <label htmlFor="degree">Degree</label>
-        <Input id="degree" placeholder="Degree / Field of study"></Input>
+        <Input
+          id="degree"
+          placeholder="Degree / Field of study"
+          value={educationInfo.degree}
+          onChange={handleEducationInfo}
+        ></Input>
 
         <div className="flex justify-between gap-6">
           <div className="w-full">
-            <label htmlFor="start-date">Start Date</label>
+            <label htmlFor="startDate">Start Date</label>
             <Input
-              id="start-date"
+              id="startDate"
               placeholder="Phone Number"
               type="date"
+              value={educationInfo.startDate}
+              onChange={handleEducationInfo}
             ></Input>
           </div>
           <div className="w-full">
-            <label htmlFor="end-date">End Date</label>
-            <Input id="end-date" placeholder="Phone Number" type="date"></Input>
+            <label htmlFor="endDate">End Date</label>
+            <Input
+              id="endDate"
+              placeholder="Phone Number"
+              type="date"
+              value={educationInfo.endDate}
+              onChange={handleEducationInfo}
+            ></Input>
           </div>
         </div>
 
         <label htmlFor="location">Location</label>
-        <Input id="location" placeholder="Location"></Input>
+        <Input
+          id="location"
+          placeholder="Location"
+          value={educationInfo.location}
+          onChange={handleEducationInfo}
+        ></Input>
 
         <div className="flex justify-center gap-1 my-4">
           <ButtonGroup>
