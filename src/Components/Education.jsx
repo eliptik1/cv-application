@@ -1,17 +1,9 @@
 import { Card, CardBody, Divider } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-function Education() {
-  let [educationInfo, setEducationInfo] = useState({
-    school: "",
-    degree: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-  });
-
+function Education({ educationInfo, setEducationInfo }) {
   function handleEducationInfo(e) {
     let inputName = e.target.id;
     setEducationInfo({ ...educationInfo, [inputName]: e.target.value });

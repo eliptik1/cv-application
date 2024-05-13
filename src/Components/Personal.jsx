@@ -1,15 +1,8 @@
 import { Card, CardBody } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-function Personal() {
-  let [personalInfo, setPersonalInfo] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-  });
-
+function Personal({ personalInfo, setPersonalInfo }) {
   function handlePersonalInfo(e) {
     let inputName = e.target.id;
     setPersonalInfo({ ...personalInfo, [inputName]: e.target.value });

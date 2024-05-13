@@ -1,17 +1,9 @@
 import { Card, CardBody, Divider } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-function Experience() {
-  let [experienceInfo, setExperienceInfo] = useState({
-    company: "",
-    position: "",
-    startDateJob: "",
-    endDateJob: "",
-    locationJob: "",
-  });
-
+function Experience({ experienceInfo, setExperienceInfo }) {
   function handleExperienceInfo(e) {
     let inputName = e.target.id;
     setExperienceInfo({ ...experienceInfo, [inputName]: e.target.value });
