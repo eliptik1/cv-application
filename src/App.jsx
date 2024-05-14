@@ -26,6 +26,8 @@ function App() {
     endDateJob: "",
     locationJob: "",
   });
+  let [educationList, setEducationList] = useState([{ id: 0 }, { id: 1 }]);
+  let [experienceList, setExperienceList] = useState([{ id: 0 }, { id: 1 }]);
   return (
     <div className="flex justify-center">
       <div className="border-2 flex-1 flex flex-col items-center gap-6">
@@ -34,11 +36,15 @@ function App() {
           setPersonalInfo={setPersonalInfo}
         />
         <Education
+          educationList={educationList}
           educationInfo={educationInfo}
+          setEducationList={setEducationList}
           setEducationInfo={setEducationInfo}
         />
         <Experience
+          experienceList={experienceList}
           experienceInfo={experienceInfo}
+          setExperienceList={setExperienceList}
           setExperienceInfo={setExperienceInfo}
         />
       </div>

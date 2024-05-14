@@ -3,18 +3,20 @@ function Result({ personalInfo, educationInfo, experienceInfo }) {
   return (
     <Card className="mt-6 mx-6 rounded-none">
       <CardBody className="h-[700px]">
-        Result
+        Personal:
         <div>{personalInfo.name}</div>
         <div>{personalInfo.email}</div>
         <div>{personalInfo.phone}</div>
         <div>{personalInfo.address}</div>
         <Divider />
+        Education:
         <div>{educationInfo.school}</div>
         <div>{educationInfo.degree}</div>
         <div>{educationInfo.startDate}</div>
         <div>{educationInfo.endDate}</div>
         <div>{educationInfo.location}</div>
         <Divider />
+        Experience:
         <div>{experienceInfo.company}</div>
         <div>{experienceInfo.position}</div>
         <div>{experienceInfo.startDateJob}</div>

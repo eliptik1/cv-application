@@ -1,92 +1,135 @@
-import { Card, CardBody, Divider } from "@nextui-org/react";
+import { useState, useEffect } from "react";
+import {
+  Card,
+  CardBody,
+  Divider,
+  Accordion,
+  AccordionItem,
+} from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
-import { useEffect } from "react";
 
-function Education({ educationInfo, setEducationInfo }) {
+function Education({
+  educationList,
+  setEducationList,
+  educationInfo,
+  setEducationInfo,
+}) {
   function handleEducationInfo(e) {
     let inputName = e.target.id;
     setEducationInfo({ ...educationInfo, [inputName]: e.target.value });
   }
 
+  const [selectedKeys, setSelectedKeys] = useState(["0"]);
+
   useEffect(() => {
-    console.log(educationInfo);
-  }, [educationInfo]);
+    console.log(educationList);
+  }, [educationList]);
 
   return (
     <Card className="w-[400px] ">
       <h2 className="text-xl">Education</h2>
-      <CardBody className="">
-        <label htmlFor="school">School</label>
-        <Input
-          id="school"
-          placeholder="School / University"
-          type="name"
-          value={educationInfo.school}
-          onChange={handleEducationInfo}
-        ></Input>
+      <Divider></Divider>
+      <Accordion
+        selectedKeys={selectedKeys}
+        onSelectionChange={setSelectedKeys}
+        itemClasses={{
+          title: "text-lg text-center",
+          trigger: "text-xl",
+        }}
+      >
+        {educationList.map((education, index) => {
+          return (
+            <AccordionItem key={index} title={"education-" + education.id}>
+              <CardBody className="">
+                <label htmlFor="school">School</label>
+                <Input
+                  id="school"
+                  placeholder="School / University"
+                  type="name"
+                  value={educationInfo.school}
+                  onChange={handleEducationInfo}
+                ></Input>
 
-        <label htmlFor="degree">Degree</label>
-        <Input
-          id="degree"
-          placeholder="Degree / Field of study"
-          value={educationInfo.degree}
-          onChange={handleEducationInfo}
-        ></Input>
+                <label htmlFor="degree">Degree</label>
+                <Input
+                  id="degree"
+                  placeholder="Degree / Field of study"
+                  value={educationInfo.degree}
+                  onChange={handleEducationInfo}
+                ></Input>
 
-        <div className="flex justify-between gap-6">
-          <div className="w-full">
-            <label htmlFor="startDate">Start Date</label>
-            <Input
-              id="startDate"
-              placeholder="Phone Number"
-              type="date"
-              value={educationInfo.startDate}
-              onChange={handleEducationInfo}
-            ></Input>
-          </div>
-          <div className="w-full">
-            <label htmlFor="endDate">End Date</label>
-            <Input
-              id="endDate"
-              placeholder="Phone Number"
-              type="date"
-              value={educationInfo.endDate}
-              onChange={handleEducationInfo}
-            ></Input>
-          </div>
-        </div>
+                <div className="flex justify-between gap-6">
+                  <div className="w-full">
+                    <label htmlFor="startDate">Start Date</label>
+                    <Input
+                      id="startDate"
+                      placeholder="Phone Number"
+                      type="date"
+                      value={educationInfo.startDate}
+                      onChange={handleEducationInfo}
+                    ></Input>
+                  </div>
+                  <div className="w-full">
+                    <label htmlFor="endDate">End Date</label>
+                    <Input
+                      id="endDate"
+                      placeholder="Phone Number"
+                      type="date"
+                      value={educationInfo.endDate}
+                      onChange={handleEducationInfo}
+                    ></Input>
+                  </div>
+                </div>
 
-        <label htmlFor="location">Location</label>
-        <Input
-          id="location"
-          placeholder="Location"
-          value={educationInfo.location}
-          onChange={handleEducationInfo}
-        ></Input>
+                <label htmlFor="location">Location</label>
+                <Input
+                  id="location"
+                  placeholder="Location"
+                  value={educationInfo.location}
+                  onChange={handleEducationInfo}
+                ></Input>
 
-        <div className="flex justify-center gap-1 my-4">
-          <ButtonGroup>
-            <Button color="default">Cancel</Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button isDisabled="" color="primary">
-              Add
-            </Button>
-          </ButtonGroup>
-        </div>
-        <Divider></Divider>
-        <Card className="mt-2">
-          <CardBody>
-            <div className="flex justify-center">University-1</div>
-          </CardBody>
-        </Card>
-        <Card className="mt-2">
-          <CardBody>
-            <div className="flex justify-center">University-2</div>
-          </CardBody>
-        </Card>
-      </CardBody>
+                <div className="flex justify-center gap-1 my-4">
+                  <ButtonGroup>
+                    <Button
+                      isDisabled={educationList.length <= 1}
+                      color="default"
+                      onClick={() => {
+                        setEducationList(
+                          educationList.filter(
+                            (item) => item.id !== education.id
+                          )
+                        );
+                        setSelectedKeys((educationList.length - 2).toString());
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </ButtonGroup>
+                  <ButtonGroup>
+                    <Button
+                      onClick={() => {
+                        setEducationList([
+                          ...educationList,
+                          {
+                            id: educationList[educationList.length - 1].id + 1,
+                          },
+                        ]);
+
+                        setSelectedKeys(educationList.length.toString());
+                      }}
+                      color="primary"
+                    >
+                      Add New
+                    </Button>
+                  </ButtonGroup>
+                </div>
+              </CardBody>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
     </Card>
   );
 }
