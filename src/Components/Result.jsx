@@ -1,8 +1,8 @@
 import { Card, CardBody, Divider } from "@nextui-org/react";
 function Result({ personalInfo, educationInfo, experienceInfo }) {
   return (
-    <Card className="mt-6 mx-6 rounded-none">
-      <CardBody className="h-[700px]">
+    <Card className="mt-6 mx-6 rounded-none w-[650px]">
+      <CardBody className="h-[700px] ">
         Personal:
         <div>{personalInfo.name}</div>
         <div>{personalInfo.email}</div>

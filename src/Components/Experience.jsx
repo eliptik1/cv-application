@@ -9,22 +9,23 @@ import {
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
 
-function Experience({
-  experienceInfo,
-  setExperienceInfo,
-  experienceList,
-  setExperienceList,
-}) {
-  function handleExperienceInfo(e) {
+function Experience({ experienceInfo, setExperienceInfo }) {
+  function handleExperienceInfo(e, index) {
     let inputName = e.target.id;
-    setExperienceInfo({ ...experienceInfo, [inputName]: e.target.value });
+    let updatedArray = [...experienceInfo];
+    updatedArray[index] = {
+      ...experienceInfo[index],
+      [inputName]: e.target.value,
+    };
+
+    setExperienceInfo(updatedArray);
   }
 
   const [selectedKeys, setSelectedKeys] = useState(["0"]);
 
   useEffect(() => {
-    console.log(experienceList);
-  }, [experienceList]);
+    console.log(experienceInfo);
+  }, [experienceInfo]);
 
   return (
     <Card className="w-[400px]">
@@ -38,7 +39,7 @@ function Experience({
           trigger: "text-xl",
         }}
       >
-        {experienceList.map((experience, index) => {
+        {experienceInfo.map((experience, index) => {
           return (
             <AccordionItem key={index} title={"experience-" + experience.id}>
               <CardBody>
@@ -46,16 +47,20 @@ function Experience({
                 <Input
                   id="company"
                   placeholder="Company Name"
-                  value={experienceInfo.company}
-                  onChange={handleExperienceInfo}
+                  value={experienceInfo[index].company}
+                  onChange={(e) => {
+                    handleExperienceInfo(e, index);
+                  }}
                 ></Input>
 
                 <label htmlFor="position">Position Title</label>
                 <Input
                   id="position"
                   placeholder="Position Title"
-                  value={experienceInfo.position}
-                  onChange={handleExperienceInfo}
+                  value={experienceInfo[index].position}
+                  onChange={(e) => {
+                    handleExperienceInfo(e, index);
+                  }}
                 ></Input>
 
                 <div className="flex justify-between gap-6">
@@ -65,8 +70,10 @@ function Experience({
                       id="startDateJob"
                       placeholder="Start Date"
                       type="date"
-                      value={experienceInfo.startDateJob}
-                      onChange={handleExperienceInfo}
+                      value={experienceInfo[index].startDateJob}
+                      onChange={(e) => {
+                        handleExperienceInfo(e, index);
+                      }}
                     ></Input>
                   </div>
                   <div className="w-full">
@@ -75,8 +82,10 @@ function Experience({
                       id="endDateJob"
                       placeholder="End Date"
                       type="date"
-                      value={experienceInfo.endDateJob}
-                      onChange={handleExperienceInfo}
+                      value={experienceInfo[index].endDateJob}
+                      onChange={(e) => {
+                        handleExperienceInfo(e, index);
+                      }}
                     ></Input>
                   </div>
                 </div>
@@ -85,21 +94,23 @@ function Experience({
                 <Input
                   id="locationJob"
                   placeholder="Location"
-                  value={experienceInfo.locationJob}
-                  onChange={handleExperienceInfo}
+                  value={experienceInfo[index].locationJob}
+                  onChange={(e) => {
+                    handleExperienceInfo(e, index);
+                  }}
                 ></Input>
                 <div className="flex justify-center gap-1 my-4">
                   <ButtonGroup>
                     <Button
-                      isDisabled={experienceList.length <= 1}
+                      isDisabled={experienceInfo.length <= 1}
                       color="default"
                       onClick={() => {
-                        setExperienceList(
-                          experienceList.filter(
+                        setExperienceInfo(
+                          experienceInfo.filter(
                             (item) => item.id !== experience.id
                           )
                         );
-                        setSelectedKeys((experienceList.length - 2).toString());
+                        setSelectedKeys((experienceInfo.length - 2).toString());
                       }}
                     >
                       Delete
@@ -108,15 +119,15 @@ function Experience({
                   <ButtonGroup>
                     <Button
                       onClick={() => {
-                        setExperienceList([
-                          ...experienceList,
+                        setExperienceInfo([
+                          ...experienceInfo,
                           {
                             id:
-                              experienceList[experienceList.length - 1].id + 1,
+                              experienceInfo[experienceInfo.length - 1].id + 1,
                           },
                         ]);
 
-                        setSelectedKeys(experienceList.length.toString());
+                        setSelectedKeys(experienceInfo.length.toString());
                       }}
                       color="primary"
                     >

@@ -9,22 +9,22 @@ import {
 import { Input } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
 
-function Education({
-  educationList,
-  setEducationList,
-  educationInfo,
-  setEducationInfo,
-}) {
-  function handleEducationInfo(e) {
+function Education({ educationInfo, setEducationInfo }) {
+  function handleEducationInfo(e, index) {
     let inputName = e.target.id;
-    setEducationInfo({ ...educationInfo, [inputName]: e.target.value });
+    let updatedArray = [...educationInfo];
+    updatedArray[index] = {
+      ...educationInfo[index],
+      [inputName]: e.target.value,
+    };
+    setEducationInfo(updatedArray);
   }
 
   const [selectedKeys, setSelectedKeys] = useState(["0"]);
 
   useEffect(() => {
-    console.log(educationList);
-  }, [educationList]);
+    console.log(educationInfo);
+  }, [educationInfo]);
 
   return (
     <Card className="w-[400px] ">
@@ -38,7 +38,7 @@ function Education({
           trigger: "text-xl",
         }}
       >
-        {educationList.map((education, index) => {
+        {educationInfo.map((education, index) => {
           return (
             <AccordionItem key={index} title={"education-" + education.id}>
               <CardBody className="">
@@ -47,16 +47,16 @@ function Education({
                   id="school"
                   placeholder="School / University"
                   type="name"
-                  value={educationInfo.school}
-                  onChange={handleEducationInfo}
+                  value={educationInfo[index].school}
+                  onChange={(e) => handleEducationInfo(e, index)}
                 ></Input>
 
                 <label htmlFor="degree">Degree</label>
                 <Input
                   id="degree"
                   placeholder="Degree / Field of study"
-                  value={educationInfo.degree}
-                  onChange={handleEducationInfo}
+                  value={educationInfo[index].degree}
+                  onChange={(e) => handleEducationInfo(e, index)}
                 ></Input>
 
                 <div className="flex justify-between gap-6">
@@ -66,8 +66,8 @@ function Education({
                       id="startDate"
                       placeholder="Phone Number"
                       type="date"
-                      value={educationInfo.startDate}
-                      onChange={handleEducationInfo}
+                      value={educationInfo[index].startDate}
+                      onChange={(e) => handleEducationInfo(e, index)}
                     ></Input>
                   </div>
                   <div className="w-full">
@@ -76,8 +76,8 @@ function Education({
                       id="endDate"
                       placeholder="Phone Number"
                       type="date"
-                      value={educationInfo.endDate}
-                      onChange={handleEducationInfo}
+                      value={educationInfo[index].endDate}
+                      onChange={(e) => handleEducationInfo(e, index)}
                     ></Input>
                   </div>
                 </div>
@@ -86,22 +86,22 @@ function Education({
                 <Input
                   id="location"
                   placeholder="Location"
-                  value={educationInfo.location}
-                  onChange={handleEducationInfo}
+                  value={educationInfo[index].location}
+                  onChange={(e) => handleEducationInfo(e, index)}
                 ></Input>
 
                 <div className="flex justify-center gap-1 my-4">
                   <ButtonGroup>
                     <Button
-                      isDisabled={educationList.length <= 1}
+                      isDisabled={educationInfo.length <= 1}
                       color="default"
                       onClick={() => {
-                        setEducationList(
-                          educationList.filter(
+                        setEducationInfo(
+                          educationInfo.filter(
                             (item) => item.id !== education.id
                           )
                         );
-                        setSelectedKeys((educationList.length - 2).toString());
+                        setSelectedKeys((educationInfo.length - 2).toString());
                       }}
                     >
                       Delete
@@ -110,14 +110,18 @@ function Education({
                   <ButtonGroup>
                     <Button
                       onClick={() => {
-                        setEducationList([
-                          ...educationList,
+                        setEducationInfo([
+                          ...educationInfo,
                           {
-                            id: educationList[educationList.length - 1].id + 1,
+                            school: "",
+                            degree: "",
+                            startDate: "",
+                            endDate: "",
+                            location: "",
+                            id: educationInfo[educationInfo.length - 1].id + 1,
                           },
                         ]);
-
-                        setSelectedKeys(educationList.length.toString());
+                        setSelectedKeys(educationInfo.length.toString());
                       }}
                       color="primary"
                     >
