@@ -5,9 +5,10 @@ import {
   Divider,
   Accordion,
   AccordionItem,
+  Input,
+  Button,
+  ButtonGroup,
 } from "@nextui-org/react";
-import { Input } from "@nextui-org/react";
-import { Button, ButtonGroup } from "@nextui-org/react";
 
 function Education({ educationInfo, setEducationInfo }) {
   function handleEducationInfo(e, index) {

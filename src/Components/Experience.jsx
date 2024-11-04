@@ -101,6 +101,17 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                     handleExperienceInfo(e, index);
                   }}
                 ></Input>
+
+                <label htmlFor="locationJob">Job Description</label>
+                <Input
+                  id="jobDescription"
+                  placeholder="Description"
+                  value={experienceInfo[index].jobDescription}
+                  onChange={(e) => {
+                    handleExperienceInfo(e, index);
+                  }}
+                ></Input>
+
                 <div className="flex justify-center gap-1 my-4">
                   <ButtonGroup>
                     <Button

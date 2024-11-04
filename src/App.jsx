@@ -7,10 +7,12 @@ import Result from "./Components/Result";
 
 function App() {
   let [personalInfo, setPersonalInfo] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
+    name: "FIRST LAST",
+    email: "YOUREMAIL@GMAIL.COM",
+    phone: "+23456789533",
+    address: "34 ISTANBUL, TURKIYE",
+    profileDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, aspernatur. Ab, exercitationem quis. Culpa libero, optio totam facere quas obcaecati ad non doloremque nisi eos eaque itaque ab tempore at?",
   });
   let [educationInfo, setEducationInfo] = useState([
     {
@@ -19,7 +21,7 @@ function App() {
       degree: "",
       startDate: "",
       endDate: "",
-      location: "",
+      location: "Turkiye",
     },
   ]);
   let [experienceInfo, setExperienceInfo] = useState([
