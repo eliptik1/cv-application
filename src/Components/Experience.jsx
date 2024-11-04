@@ -17,18 +17,17 @@ function Experience({ experienceInfo, setExperienceInfo }) {
       ...experienceInfo[index],
       [inputName]: e.target.value,
     };
-
     setExperienceInfo(updatedArray);
   }
 
   const [selectedKeys, setSelectedKeys] = useState(["0"]);
 
   useEffect(() => {
-    console.log(experienceInfo);
+    //console.log(experienceInfo);
   }, [experienceInfo]);
 
   return (
-    <Card className="w-[400px]">
+    <Card className="w-[400px] mb-12">
       <h2 className="text-xl">Experience</h2>
       <Divider></Divider>
       <Accordion
@@ -41,13 +40,16 @@ function Experience({ experienceInfo, setExperienceInfo }) {
       >
         {experienceInfo.map((experience, index) => {
           return (
-            <AccordionItem key={index} title={"experience-" + experience.id}>
+            <AccordionItem
+              key={index}
+              title={"experience-" + Math.floor(experience.id + 1)}
+            >
               <CardBody>
                 <label htmlFor="company">Company Name</label>
                 <Input
                   id="company"
                   placeholder="Company Name"
-                  value={experienceInfo[index].company}
+                  value={experienceInfo[index].company || ""}
                   onChange={(e) => {
                     handleExperienceInfo(e, index);
                   }}
@@ -57,7 +59,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                 <Input
                   id="position"
                   placeholder="Position Title"
-                  value={experienceInfo[index].position}
+                  value={experienceInfo[index].position || ""}
                   onChange={(e) => {
                     handleExperienceInfo(e, index);
                   }}
@@ -70,7 +72,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                       id="startDateJob"
                       placeholder="Start Date"
                       type="date"
-                      value={experienceInfo[index].startDateJob}
+                      value={experienceInfo[index].startDateJob || ""}
                       onChange={(e) => {
                         handleExperienceInfo(e, index);
                       }}
@@ -82,7 +84,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                       id="endDateJob"
                       placeholder="End Date"
                       type="date"
-                      value={experienceInfo[index].endDateJob}
+                      value={experienceInfo[index].endDateJob || ""}
                       onChange={(e) => {
                         handleExperienceInfo(e, index);
                       }}
@@ -94,7 +96,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                 <Input
                   id="locationJob"
                   placeholder="Location"
-                  value={experienceInfo[index].locationJob}
+                  value={experienceInfo[index].locationJob || ""}
                   onChange={(e) => {
                     handleExperienceInfo(e, index);
                   }}

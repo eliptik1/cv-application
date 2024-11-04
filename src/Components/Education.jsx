@@ -23,7 +23,7 @@ function Education({ educationInfo, setEducationInfo }) {
   const [selectedKeys, setSelectedKeys] = useState(["0"]);
 
   useEffect(() => {
-    console.log(educationInfo);
+    //console.log(educationInfo);
   }, [educationInfo]);
 
   return (
@@ -40,7 +40,10 @@ function Education({ educationInfo, setEducationInfo }) {
       >
         {educationInfo.map((education, index) => {
           return (
-            <AccordionItem key={index} title={"education-" + education.id}>
+            <AccordionItem
+              key={index}
+              title={"education-" + Math.floor(education.id + 1)}
+            >
               <CardBody className="">
                 <label htmlFor="school">School</label>
                 <Input

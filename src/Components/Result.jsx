@@ -2,7 +2,7 @@ import { Card, CardBody, Divider } from "@nextui-org/react";
 function Result({ personalInfo, educationInfo, experienceInfo }) {
   return (
     <Card className="mt-6 mx-6 rounded-none w-[650px]">
-      <CardBody className="h-[700px] ">
+      <CardBody className="h-[850px] ">
         Personal:
         <div>{personalInfo.name}</div>
         <div>{personalInfo.email}</div>
@@ -10,18 +10,30 @@ function Result({ personalInfo, educationInfo, experienceInfo }) {
         <div>{personalInfo.address}</div>
         <Divider />
         Education:
-        <div>{educationInfo.school}</div>
-        <div>{educationInfo.degree}</div>
-        <div>{educationInfo.startDate}</div>
-        <div>{educationInfo.endDate}</div>
-        <div>{educationInfo.location}</div>
+        {educationInfo.map((education, index) => {
+          return (
+            <div key={index}>
+              <div>{education.school}</div>
+              <div>{education.degree}</div>
+              <div>{education.startDate}</div>
+              <div>{education.endDate}</div>
+              <div>{education.location}</div>
+            </div>
+          );
+        })}
         <Divider />
         Experience:
-        <div>{experienceInfo.company}</div>
-        <div>{experienceInfo.position}</div>
-        <div>{experienceInfo.startDateJob}</div>
-        <div>{experienceInfo.endDateJob}</div>
-        <div>{experienceInfo.locationJob}</div>
+        {experienceInfo.map((experience, index) => {
+          return (
+            <div key={index * 5}>
+              <div>{experience.company}</div>
+              <div>{experience.position}</div>
+              <div>{experience.startDateJob}</div>
+              <div>{experience.endDateJob}</div>
+              <div>{experience.locationJob}</div>
+            </div>
+          );
+        })}
       </CardBody>
     </Card>
   );
