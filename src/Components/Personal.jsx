@@ -45,14 +45,6 @@ function Personal({ personalInfo, setPersonalInfo }) {
           value={personalInfo.address}
           onChange={handlePersonalInfo}
         ></Input>
-
-        <label htmlFor="address">Profile Description</label>
-        <Input
-          id="profileDescription"
-          placeholder="Description"
-          value={personalInfo.profileDescription}
-          onChange={handlePersonalInfo}
-        ></Input>
       </CardBody>
     </Card>
   );

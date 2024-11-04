@@ -28,6 +28,7 @@ function Result({ personalInfo, educationInfo, experienceInfo }) {
             <div key={index * 5}>
               <div>{experience.company}</div>
               <div>{experience.position}</div>
+              <div>{experience.jobDescription}</div>
               <div>{experience.startDateJob}</div>
               <div>{experience.endDateJob}</div>
               <div>{experience.locationJob}</div>

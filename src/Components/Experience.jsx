@@ -20,7 +20,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
     setExperienceInfo(updatedArray);
   }
 
-  const [selectedKeys, setSelectedKeys] = useState(["0"]);
+  const [selectedKeys, setSelectedKeys] = useState(["1"]);
 
   useEffect(() => {
     //console.log(experienceInfo);
@@ -65,6 +65,16 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                   }}
                 ></Input>
 
+                <label htmlFor="locationJob">Job Description</label>
+                <Input
+                  id="jobDescription"
+                  placeholder="Description"
+                  value={experienceInfo[index].jobDescription || ""}
+                  onChange={(e) => {
+                    handleExperienceInfo(e, index);
+                  }}
+                ></Input>
+
                 <div className="flex justify-between gap-6">
                   <div className="w-full">
                     <label htmlFor="startDateJob">Start Date</label>
@@ -97,16 +107,6 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                   id="locationJob"
                   placeholder="Location"
                   value={experienceInfo[index].locationJob || ""}
-                  onChange={(e) => {
-                    handleExperienceInfo(e, index);
-                  }}
-                ></Input>
-
-                <label htmlFor="locationJob">Job Description</label>
-                <Input
-                  id="jobDescription"
-                  placeholder="Description"
-                  value={experienceInfo[index].jobDescription}
                   onChange={(e) => {
                     handleExperienceInfo(e, index);
                   }}
