@@ -21,7 +21,7 @@ function Education({ educationInfo, setEducationInfo }) {
     setEducationInfo(updatedArray);
   }
 
-  const [selectedKeys, setSelectedKeys] = useState(["0"]);
+  const [selectedKeys, setSelectedKeys] = useState(["1"]);
 
   useEffect(() => {
     //console.log(educationInfo);
@@ -68,8 +68,7 @@ function Education({ educationInfo, setEducationInfo }) {
                     <label htmlFor="startDate">Start Date</label>
                     <Input
                       id="startDate"
-                      placeholder="Phone Number"
-                      type="date"
+                      type="month"
                       value={educationInfo[index].startDate}
                       onChange={(e) => handleEducationInfo(e, index)}
                     ></Input>
@@ -78,8 +77,7 @@ function Education({ educationInfo, setEducationInfo }) {
                     <label htmlFor="endDate">End Date</label>
                     <Input
                       id="endDate"
-                      placeholder="Phone Number"
-                      type="date"
+                      type="month"
                       value={educationInfo[index].endDate}
                       onChange={(e) => handleEducationInfo(e, index)}
                     ></Input>

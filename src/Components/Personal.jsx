@@ -41,7 +41,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
         <label htmlFor="address">Address</label>
         <Input
           id="address"
-          placeholder="Address"
+          placeholder="City, Country"
           value={personalInfo.address}
           onChange={handlePersonalInfo}
         ></Input>

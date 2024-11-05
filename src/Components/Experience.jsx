@@ -27,7 +27,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
   }, [experienceInfo]);
 
   return (
-    <Card className="w-[400px] mb-12">
+    <Card className="w-[400px] ">
       <h2 className="text-xl">Experience</h2>
       <Divider></Divider>
       <Accordion
@@ -81,7 +81,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                     <Input
                       id="startDateJob"
                       placeholder="Start Date"
-                      type="date"
+                      type="month"
                       value={experienceInfo[index].startDateJob || ""}
                       onChange={(e) => {
                         handleExperienceInfo(e, index);
@@ -93,7 +93,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                     <Input
                       id="endDateJob"
                       placeholder="End Date"
-                      type="date"
+                      type="month"
                       value={experienceInfo[index].endDateJob || ""}
                       onChange={(e) => {
                         handleExperienceInfo(e, index);
