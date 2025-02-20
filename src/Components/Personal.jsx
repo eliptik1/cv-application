@@ -8,7 +8,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
   }
 
   return (
-    <Card className="w-[400px] mt-6">
+    <Card className="w-full max-w-[400px] mt-6">
       <h2 className="text-xl">Personal Details</h2>
       <CardBody>
         <label htmlFor="name">Full name</label>

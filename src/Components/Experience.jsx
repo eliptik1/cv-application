@@ -27,7 +27,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
   }, [experienceInfo]);
 
   return (
-    <Card className="w-[400px] ">
+    <Card className="w-full max-w-[400px]">
       <h2 className="text-xl">Experience</h2>
       <Divider></Divider>
       <Accordion
@@ -75,7 +75,7 @@ function Experience({ experienceInfo, setExperienceInfo }) {
                   }}
                 ></Input>
 
-                <div className="flex justify-between gap-6">
+                <div className="flex justify-between gap-6  max-xl:flex-wrap">
                   <div className="w-full">
                     <label htmlFor="startDateJob">Start Date</label>
                     <Input

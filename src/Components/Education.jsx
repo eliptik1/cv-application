@@ -28,7 +28,7 @@ function Education({ educationInfo, setEducationInfo }) {
   }, [educationInfo]);
 
   return (
-    <Card className="w-[400px] ">
+    <Card className="w-full max-w-[400px]">
       <h2 className="text-xl">Education</h2>
       <Divider></Divider>
       <Accordion
@@ -63,7 +63,7 @@ function Education({ educationInfo, setEducationInfo }) {
                   onChange={(e) => handleEducationInfo(e, index)}
                 ></Input>
 
-                <div className="flex justify-between gap-6">
+                <div className="flex justify-between gap-6 max-xl:flex-wrap">
                   <div className="w-full">
                     <label htmlFor="startDate">Start Date</label>
                     <Input

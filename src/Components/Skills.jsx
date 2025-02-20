@@ -11,7 +11,7 @@ function Skills({ skillsInfo, setSkillsInfo }) {
   }
 
   return (
-    <Card className="w-[400px] mb-12">
+    <Card className="w-full max-w-[400px]">
       <h2 className="text-xl">Skills</h2>
       <CardBody>
         {skillsInfo.map((skill, index) => {
